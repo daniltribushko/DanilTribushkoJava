@@ -73,8 +73,12 @@ public class CSVParser {
                         maxscoreOfHomeworks = Integer.parseInt(headers3[j]);
                         break;
                     default:
+
                         Task task = new Task(tasktype.getTaskType(), tasktype.getNameType(), Integer.parseInt(headers3[j]));
-                        tasks.add(task);
+                        if (!task.getTasktype().equals("No task")){
+                            tasks.add(task);
+                        }
+
                 }
 
 
@@ -125,7 +129,9 @@ public class CSVParser {
                         break;
                     default:
                         TaskScore task = new TaskScore(tasktype.getTaskType(), tasktype.getNameType(), Integer.parseInt(headers4[j]));
-                        tasks.add(task);
+                        if (task.getTasktype().equals("No task")==false){
+                            tasks.add(task);
+                        }
                 }
 
                 if(j+1 == headers2.length){

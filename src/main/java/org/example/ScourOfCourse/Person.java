@@ -10,10 +10,13 @@ public class Person {
         this.courseScore = courseScore;
     }
 
-    public String getStudent(){
+    public String getStudentName(){
         return student.getStudentName();
     }
 
+    public Student getStudent(){
+        return student;
+    }
     @Override
     public String toString() {
         return String.format("%s %s", student, courseScore);

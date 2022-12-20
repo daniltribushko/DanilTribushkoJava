@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Report {
     private final ArrayList<Person> persons;
+    private ArrayList<Student> studentslist = new ArrayList<>();
     private final Course course;
     public Report(Course course, ArrayList<Person> persons){
         this.persons = persons;
@@ -17,6 +18,13 @@ public class Report {
         return persons;
     }
 
+    public ArrayList<Student> getStudentslist(){
+        for (var i : persons){
+            studentslist.add(i.getStudent());
+        }
+
+        return studentslist;
+    }
     public Course getCourse() {
         return course;
     }
@@ -32,9 +40,10 @@ public class Report {
     }
     public Person getStudent(String name){
         return persons.stream()
-                .filter(person -> person.getStudent().equals(name))
+                .filter(person -> person.getStudentName().equals(name))
                 .findFirst()
                 .orElseThrow();
+
 
     }
 }
