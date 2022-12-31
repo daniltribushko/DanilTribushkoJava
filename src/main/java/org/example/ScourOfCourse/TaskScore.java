@@ -18,7 +18,7 @@ public class TaskScore{
         return tasktype;
     }
 
-    public int getSocres() {
+    public int getScores() {
         return scoreOfTask;
     }
 
@@ -28,7 +28,7 @@ public class TaskScore{
 
     @Override
     public String toString(){
-        return String.format("%s %s: баллов за задание %s", tasktype, taskName, scoreOfTask);
+        return String.format("%s %s: баллов за задание %s t; ", tasktype, taskName, scoreOfTask);
     }
 
 }

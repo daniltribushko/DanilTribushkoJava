@@ -13,6 +13,14 @@ public class VkPerson {
         this.sex = sex;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
     public String toString(){
         return String.format("%s - %s", name, sex);
     }

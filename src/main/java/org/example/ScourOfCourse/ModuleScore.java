@@ -3,24 +3,18 @@ package org.example.ScourOfCourse;
 import java.util.ArrayList;
 
 public class ModuleScore {
-    private ArrayList<TaskScore> tasks = new ArrayList<>();
-    private final  int scoreOfActivities;
-    private final int scoreOfExercises;
-    private final int scoreOfHomework;
+    private ArrayList<TaskScore> tasks;
+
     private final String moduleName;
-    private final int scoreOfSiminars;
+    private final MaxScore maxScore;
 
 
 
 
+    public ModuleScore(String moduleName, MaxScore maxScore, ArrayList<TaskScore> tasks){
 
-    public ModuleScore(String moduleName, int scoreOfActivities, int scoreOfExercises, int scoreOfHomework, int scoreOfSiminars, ArrayList<TaskScore> tasks){
-
-        this.scoreOfActivities = scoreOfActivities;
-        this.scoreOfExercises = scoreOfExercises;
-        this.scoreOfHomework = scoreOfHomework;
         this.moduleName = moduleName;
-        this.scoreOfSiminars = scoreOfSiminars;
+        this.maxScore = maxScore;
         this.tasks = tasks;
 
     }
@@ -33,26 +27,13 @@ public class ModuleScore {
         return tasks;
     }
 
-    public int getMaxScoreOfActivities() {
-        return scoreOfActivities;
+    public MaxScore getMaxScore() {
+        return maxScore;
     }
 
-    public int getMaxScoreOfExercises() {
-        return scoreOfExercises;
-    }
 
-    public int getMaxScoreOfHomework() {
-        return scoreOfHomework;
-    }
-
-    public int getMaxScoreOfSiminars() {
-        return scoreOfSiminars;
-    }
-
-    @Override
     public String toString(){
-        String string = moduleName + " " + scoreOfActivities + " " + scoreOfExercises + " " + scoreOfHomework + " " + scoreOfSiminars + " " + tasks;
-        return String.format("%s : максимум за активность - %s, максимум за упражнения - %s, максимум за дз - %s, максимум за семинары - %s %s  \n", moduleName, scoreOfActivities, scoreOfExercises, scoreOfHomework, scoreOfSiminars, tasks);
+        return String.format("%s : %s,  %s  m; ", moduleName, maxScore, tasks);
     }
 
 }

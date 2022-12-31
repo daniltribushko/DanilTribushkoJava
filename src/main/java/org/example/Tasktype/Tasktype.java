@@ -9,7 +9,7 @@ public class Tasktype {
     }
 
     public String getTaskType(){
-        type = "No task";
+        type = null;
         String[] str = string.split(":");
         if (str[0].equals("ДЗ") && (str.length != 1)){
             type = "Дз";
@@ -28,8 +28,8 @@ public class Tasktype {
     public String getNameType(){
         String[] str = string.split(":");
         String result;
-        if (getTaskType().equals("No task")){
-            result = "Error: No task";
+        if (getTaskType() == null){
+            result = null;
         }
 
         else if (getTaskType().equals("Доп")){

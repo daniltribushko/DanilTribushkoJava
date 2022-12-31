@@ -9,14 +9,16 @@ import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.base.Sex;
 import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.UserFull;
+import org.example.ScourOfCourse.Person;
 import org.example.ScourOfCourse.Report;
 import org.example.ScourOfCourse.Student;
 
 import java.util.ArrayList;
 
 public class VKapi {
-    private final int APP_ID = 0;
+    private final int APP_ID = 0 ;
     private final String CODE = "";
     private final VkApiClient vk;
     private final UserActor actor;
@@ -39,21 +41,25 @@ public class VKapi {
                 .get(0);
     }
 
-    public String getSex(UserFull result) throws ClientException,ApiException,InterruptedException{
-        if(result == null){
+
+    public String getSex(UserFull result) throws ClientException, ApiException, InterruptedException {
+        if (result == null){
+
             return null;
         }
-
         else {
-            return result.getSex().name();
+            if (result.getSex() == null) {
+                return null;
+            }
+            else return result.getSex().name();
         }
-
     }
 
     public UserFull getIdStudents(Group group, String name) throws ClientException, ApiException, InterruptedException{
         UserFull result = vk.users()
                 .search(actor)
                 .q(name)
+                .fields(Fields.SEX)
                 .groupId(group.getId())
                 .count(1)
                 .execute()
@@ -61,20 +67,20 @@ public class VKapi {
                 .stream()
                 .findFirst()
                 .orElse(null);
-        Thread.sleep(300);
+        Thread.sleep(270);
 
         return result;
     }
 
-    public ArrayList<VkPerson> getStudentsFromVk(ArrayList<Student> students) throws ClientException,ApiException, InterruptedException{
+    public ArrayList<VkPerson> getStudentsFromVk(ArrayList<Person> students) throws ClientException,ApiException, InterruptedException{
         Group group = gitIDVkGroup();
         ArrayList<VkPerson> vkPersons = new ArrayList<>();
         for (var i : students){
             String name = i.getStudentName();
             UserFull user = getIdStudents(group, name);
             if(user == null){
-                String nameVk = String.format("Студент <%s> не найден", name);
-                VkPerson vkPerson= new VkPerson(nameVk, getSex(user));
+
+                VkPerson vkPerson= new VkPerson(name, getSex(user));
                 vkPersons.add(vkPerson);
             }
 

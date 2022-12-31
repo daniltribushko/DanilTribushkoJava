@@ -20,7 +20,7 @@ public class Task{
         return tasktype;
     }
 
-    public int getMaxSocres() {
+    public int getMaxScores() {
         return maxSocres;
     }
 

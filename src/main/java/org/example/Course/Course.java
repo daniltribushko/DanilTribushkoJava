@@ -1,49 +1,37 @@
 package org.example.Course;
 
+import org.example.ScourOfCourse.MaxScore;
+
 import java.util.ArrayList;
 
 public class Course {
     private final String nameCourse;
-    private final int maxscoreOfActivities;
-    private final int maxscoreOfExcersises;
-    private final int maxscoreOfHomeWorks;
-    private final int maxscoreOfSeminars;
-    private ArrayList<java.lang.Module> modules  = new ArrayList<>();
 
-    public Course(String nameCourse, int maxscoreOfActivities, int maxscoreOfExcersises, int maxscoreOfHomeworks, int maxscoreOfSeminars, ArrayList modules){
+    private final MaxScore maxScore;
+    private ArrayList<Module> modulesCourse;
+
+    public Course(String nameCourse, MaxScore maxScore, ArrayList modulesCourse){
         this.nameCourse = nameCourse;
-        this.maxscoreOfActivities = maxscoreOfActivities;
-        this.maxscoreOfExcersises = maxscoreOfExcersises;
-        this.maxscoreOfHomeWorks = maxscoreOfHomeworks;
-        this.maxscoreOfSeminars = maxscoreOfSeminars;
-        this.modules = modules;
+        this.maxScore = maxScore;
+        this.modulesCourse = modulesCourse;
     }
 
     public String getNameCourse() {
         return nameCourse;
     }
 
-    public int getScoreOfActivities() {
-        return maxscoreOfActivities;
+    public MaxScore maxScore(){
+        return maxScore;
+    }
+    public ArrayList<Module> getModulesFromCourse() {
+        return modulesCourse;
     }
 
-    public int getScoreOfExcersises() {
-        return maxscoreOfExcersises;
-    }
-
-    public int getScoreOfHomeWorks() {
-        return maxscoreOfHomeWorks;
-    }
-
-    public int getScoreOfSeminars() {
-        return maxscoreOfSeminars;
-    }
-
-    public ArrayList<java.lang.Module> getModules() {
-        return modules;
+    public MaxScore getMaxScore() {
+        return maxScore;
     }
 
     public String toString(){
-        return String.format("%s : максимум за все активности - %s, максимум за все упражнения - %s, максиум за все домашнии работы - %s, максимум за все семинары - %s %s",nameCourse, maxscoreOfActivities, maxscoreOfExcersises, maxscoreOfHomeWorks, maxscoreOfSeminars, modules);
+        return String.format("%s : максимум за все активности - %s, максимум за все упражнения - %s, максиум за все домашнии работы - %s, максимум за все семинары - %s %s",nameCourse, maxScore.getScoreOfActivities(), maxScore.getScoreOfExercises(), maxScore.getScoreOfHomeworks(), maxScore.getScoreOfSiminars(), modulesCourse);
     }
 }

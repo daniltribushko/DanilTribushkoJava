@@ -1,23 +1,30 @@
 package org.example.ScourOfCourse;
 
+import java.util.ArrayList;
+
 public class Student {
-    private final String studentNameSurname;
-    private final String group;
-    public Student(String studentNameSurname, String group){
-        this.studentNameSurname = studentNameSurname;
-        this.group = group;
+    private final Person person;
+    private final  CourseScore courseScore;
+    public Student(Person person, CourseScore courseScore){
+        this.person = person;
+        this.courseScore = courseScore;
     }
 
-    public String getStudentName() {
-        return studentNameSurname;
+    public String getStudentName(){
+        return person.getStudentName();
     }
 
-    public String getGroup() {
-        return group;
+    public CourseScore getCourseScore() {
+        return courseScore;
     }
 
+    public Person getPerson(){
+        return person;
+    }
     @Override
-    public String toString(){
-        return String.format("%s (%s) ", studentNameSurname, group);
+    public String toString() {
+        return String.format("%s %s", person, courseScore);
     }
+
+
 }

@@ -1,28 +1,28 @@
 package org.example.Course;
 
+import org.example.ScourOfCourse.MaxScore;
+import org.example.ScourOfCourse.TaskScore;
+
 import java.util.ArrayList;
 
 public class Module {
-    private ArrayList<Task> tasks = new ArrayList<>();
-    private final  int maxscoreOfActivities;
-    private final int maxscoreOfExercises;
-    private final int maxscoreOfHomework;
+    private ArrayList<Task> tasks;
+
     private final String moduleName;
-    private final int maxscoreOfSiminars;
+    private final MaxScore maxScore;
 
 
 
+    public Module(String moduleName, MaxScore maxScore, ArrayList<Task> tasks){
 
-
-    public Module(String moduleName, int maxscoreOfActivities, int maxscoreOfExercises, int maxscoreOfHomework, int maxscoreOfSiminars, ArrayList<Task> tasks){
-
-        this.maxscoreOfActivities = maxscoreOfActivities;
-        this.maxscoreOfExercises = maxscoreOfExercises;
-        this.maxscoreOfHomework = maxscoreOfHomework;
         this.moduleName = moduleName;
-        this.maxscoreOfSiminars = maxscoreOfSiminars;
+        this.maxScore = maxScore;
         this.tasks = tasks;
 
+    }
+
+    public MaxScore getMaxScore() {
+        return maxScore;
     }
 
     public String getModuleName(){
@@ -33,23 +33,9 @@ public class Module {
         return tasks;
     }
 
-    public int getMaxScoreOfActivities() {
-        return maxscoreOfActivities;
-    }
 
-    public int getMaxScoreOfExercises() {
-        return maxscoreOfExercises;
-    }
-
-    public int getMaxScoreOfHomework() {
-        return maxscoreOfHomework;
-    }
-
-    public int getMaxScoreOfSiminars() {
-        return maxscoreOfSiminars;
-    }
 
     public String toString(){
-        return String.format("%s : максимум за активность - %s, максимум за упражнения - %s, максимум за дз - %s, максимум за семинары - %s %s  \n", moduleName,  maxscoreOfActivities,  maxscoreOfExercises,  maxscoreOfHomework,  maxscoreOfSiminars,  tasks);
+        return String.format("%s курс : максимум за все активности - %s, максимум за все упражнения - %s, максиум за все домашнии работы - %s, максимум за все семинары - %s %s \n", moduleName , maxScore.getScoreOfActivities(), maxScore.getScoreOfExercises(), maxScore.getScoreOfHomeworks(), maxScore.getScoreOfSiminars(), tasks);
     }
 }
